@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Collapse } from 'antd';
+import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
+
+const { Panel } = Collapse;
 
 function App() {
+  const customExpandIcon = ({ isActive }) => {
+    return isActive ? <CaretDownOutlined /> : <CaretUpOutlined />;
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Collapse expandIcon={customExpandIcon}>
+      <Panel header="Panel 1" key="1">
+        <p>Content of panel 1</p>
+      </Panel>
+      <Panel header="Panel 2" key="2">
+        <p>Content of panel 2</p>
+      </Panel>
+      <Panel header="Panel 3" key="3">
+        <p>Content of panel 3</p>
+      </Panel>
+    </Collapse>
   );
 }
 
